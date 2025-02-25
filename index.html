@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تهنئة رمضان</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenaier-logo">
+        <img src="logo.jpeg" class="logo" alt="">
+        <div class="text">
+            مطور الموقع
+        </div>
+    </div>
+    <img src="lanterns.png" class="lanterns">
+
+    <div class="content">
+        <div class="images">
+            <img src="bg.jpg">
+        </div>
+        <div class="text">
+            <h1>رمضان كريم</h1>
+            <p>أعاده الله علينا وعليكم بالخير واليمن والبركات</p>
+        </div>
+        <div class="images">
+            <img src="bg2.jpg">
+        </div>
+    </div>
+    
+    <img src="family.jpg" class="family">
+
+    <img src="mosque.png" class="mosque">
+
+    <!-- ملف الصوت -->
+    <audio id="background-audio" src="ramadan.mp3" loop></audio>
+
+    <!-- زر تشغيل الصوت -->
+    <button id="play-audio" class="audio-btn">🔊 تشغيل الصوت</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("background-audio");
+            const playButton = document.getElementById("play-audio");
+
+            // تشغيل الصوت عند النقر على الزر
+            playButton.addEventListener("click", function() {
+                audio.play().then(() => {
+                    playButton.style.display = "none"; // إخفاء الزر بعد تشغيل الصوت
+                }).catch(error => console.log("خطأ في تشغيل الصوت:", error));
+            });
+
+            // تشغيل الصوت عند النقر في أي مكان على الصفحة
+            document.body.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play().catch(error => console.log("لم يُسمح بتشغيل الصوت:", error));
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
